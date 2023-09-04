@@ -2,30 +2,47 @@ package com.example.gitircource.basics
 
 fun main(){
 
-    val name = "Dilip"
-    println(name)
+   //if-else
+   //when
 
-    var age = 34
-    println(age)
-    age = 35
-    println(age)
+    val name = "Aluex"
+
+    val result = if(name.length == 4){
+        println("y")
+        name.length
+    }else{
+        println("n")
+        name.length
+    }
+
+    println("result : $result")
 
 
-    val salary = 3000L
-    println(salary)
+    // swtich like thing
 
-    val course = "Kotlin Spring"
-    println("course: $course and the course length is ${course.length}") // string interpolation | string template
+    val position = 7
 
-    val multiLine = "ABC \n DEF"
-    println(multiLine)
+//    val medal = if(position == 1){
+//        "GOLD"
+//    }else if(position==2){
+//        "SILVER"
+//    }else if(position==3){
+//        "BRONZE"
+//    }else{
+//        "Nothing"
+//    }
 
-    val multiLine1 = """ 
-        ABC
-        DEF
-    """.trimIndent()
+    val medal = when (position) {
+        1 -> "GOLD"
+        2 -> "SILVER"
+        3 -> "BRONZE"
+        else -> "Nothing"
+    }
 
-    print(multiLine1)
+    print(medal)
+
+
+
 
 
 
