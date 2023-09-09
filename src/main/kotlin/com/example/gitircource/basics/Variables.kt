@@ -1,21 +1,24 @@
 package com.example.gitircource.basics
 
-fun main(){
+import com.example.gitircource.functions.courseName
+import com.example.gitircource.functions.topLevelFunction
 
-   //if-else
-   //when
+fun main() {
+
+    //if-else
+    //when
 
     val name = "Aluex"
 
-    val result = if(name.length == 4){
+    val result = if (name.length == 4) {
         println("y")
         name.length
-    }else{
+    } else {
         println("n")
         name.length
     }
 
-    println("result : $result")
+//    println("result : $result")
 
 
     // swtich like thing
@@ -39,11 +42,11 @@ fun main(){
         else -> "Nothing"
     }
 
-    print(medal)
+//    print(medal)
 
-
-
-
+    val num = topLevelFunction()
+    println("num is $num")
+    println("coursename is $courseName")
 
 
 }
