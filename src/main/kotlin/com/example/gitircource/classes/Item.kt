@@ -14,4 +14,6 @@ fun main() {
     println("Item is ${item.name}")
     item.name = "Iphone 13"
     println("Item is ${item.name}")
+
+    println(item)
 }
