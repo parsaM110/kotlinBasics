@@ -13,6 +13,7 @@ class Student(name: String) : User(name) {
     override var isLoggedIn: Boolean = false
 
     companion object {
+        const val noOfEnrolledCources = 10
         fun country() = "USA"
     }
     override fun login() {
@@ -32,7 +33,9 @@ fun main() {
     println("Logged in values is : ${student.isLoggedIn}")
 
     val country = Student.country()
-    println("\u001B[31m" + "Country is $country" + "\u001B[0m")
+    println("\u001B[91m" + "Country is $country" + "\u001B[0m")
+    println("\u001B[33m" + "noOfEnrolledCources is ${Student.noOfEnrolledCources}" + "\u001B[0m")
+
 
 
     val instructor = Instructor("Dilip")
