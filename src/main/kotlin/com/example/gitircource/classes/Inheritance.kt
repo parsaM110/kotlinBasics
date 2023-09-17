@@ -32,7 +32,7 @@ fun main() {
     println("Logged in values is : ${student.isLoggedIn}")
 
     val country = Student.country()
-    println("Country is $country")
+    println("\u001B[31m" + "Country is $country" + "\u001B[0m")
 
 
     val instructor = Instructor("Dilip")
