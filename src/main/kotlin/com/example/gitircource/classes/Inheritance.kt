@@ -11,6 +11,10 @@ open class User(val name: String) {
 
 class Student(name: String) : User(name) {
     override var isLoggedIn: Boolean = false
+
+    companion object {
+        fun country() = "USA"
+    }
     override fun login() {
         println("inside student Login: $name") // this is the override thing
         super.login()
@@ -26,6 +30,11 @@ fun main() {
     student.login()
     student.isLoggedIn = true
     println("Logged in values is : ${student.isLoggedIn}")
+
+    val country = Student.country()
+    println("Country is $country")
+
+
     val instructor = Instructor("Dilip")
     println("name is ${instructor.name}")
     instructor.login()
