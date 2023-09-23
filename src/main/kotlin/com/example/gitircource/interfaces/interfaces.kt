@@ -14,7 +14,7 @@ interface CourseRepository {
 }
 
 interface Repository {
-    fun getAll() : Any
+    fun getAll(): Any
 }
 
 class SqlCourseRepository : CourseRepository, Repository {
@@ -35,21 +35,57 @@ class NoSqlCourseRepository : CourseRepository {
 
     override fun save(course: Course): Int {
         println("course in NoSqlCourseRepository : $course")
-        return super.save(course)
+//        return super.save(course)
+        return course.id
     }
 
+}
+
+interface A {
+    fun doSomething() {
+        println("doSomething in A")
+    }
+}
+
+interface B {
+    fun doSomething() {
+        println("doSomething in B")
+    }
+}
+
+
+
+class AB : A, B {
+
+    override fun doSomething() {
+        super<A>.doSomething()
+        super<B>.doSomething()
+        println("doSomething in AB")
+    }
 }
 
 fun main() {
     val sqlCourseRepository = SqlCourseRepository()
     val course = sqlCourseRepository.getbyId(1)
     println("Course is $course")
-    val courseId = sqlCourseRepository.save(Course(5, "Reactive Programming in Modern Java using Project Reactor", "Dilip"))
+    val courseId =
+        sqlCourseRepository.save(Course(5, "Reactive Programming in Modern Java using Project Reactor", "Dilip"))
     println("Saved Course  Id is : $courseId")
 
     val nosqlCourseRepository = NoSqlCourseRepository()
     val course1 = nosqlCourseRepository.getbyId(1)
     println("Course is $course1")
-    val savedCourseId =  nosqlCourseRepository.save(Course(6, "Reactive Programming in Modern Java using Project Reactor", "Dilip"))
+    val savedCourseId =
+        nosqlCourseRepository.save(Course(6, "Reactive Programming in Modern Java using Project Reactor", "Dilip"))
     println("Saved Course  Id is in nosqlCourseRepository: $savedCourseId")
+
+
+    val ab = AB()
+    ab.doSomething()
+
+
+
+
+
+
 }
