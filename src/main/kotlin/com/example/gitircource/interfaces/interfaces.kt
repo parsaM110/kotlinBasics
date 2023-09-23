@@ -4,6 +4,7 @@ import com.example.gitircource.classes.Course
 
 interface CourseRepository {
 
+    val isCoursePersisted: Boolean
     fun getbyId(id: Int): Course
 
     fun save(course: Course): Int {
@@ -18,8 +19,16 @@ interface Repository {
 }
 
 class SqlCourseRepository : CourseRepository, Repository {
+    override var isCoursePersisted: Boolean = false
+
+
     override fun getbyId(id: Int): Course {
         return Course(1, "Reactive Programming in Modern Java using Project Reactor", "Dilip");
+    }
+
+    override fun save(course: Course): Int {
+        isCoursePersisted = true
+        return super.save(course)
     }
 
     override fun getAll(): Any {
@@ -29,6 +38,9 @@ class SqlCourseRepository : CourseRepository, Repository {
 }
 
 class NoSqlCourseRepository : CourseRepository {
+    override val isCoursePersisted: Boolean = false
+
+
     override fun getbyId(id: Int): Course {
         return Course(1, "Reactive Programming in Modern Java using Project Reactor", "Dilip");
     }
@@ -54,7 +66,6 @@ interface B {
 }
 
 
-
 class AB : A, B {
 
     override fun doSomething() {
@@ -70,6 +81,7 @@ fun main() {
     println("Course is $course")
     val courseId =
         sqlCourseRepository.save(Course(5, "Reactive Programming in Modern Java using Project Reactor", "Dilip"))
+    println("Course persisted value is ${sqlCourseRepository.isCoursePersisted}")
     println("Saved Course  Id is : $courseId")
 
     val nosqlCourseRepository = NoSqlCourseRepository()
@@ -82,10 +94,6 @@ fun main() {
 
     val ab = AB()
     ab.doSomething()
-
-
-
-
 
 
 }
