@@ -5,13 +5,28 @@ data class Movie(
     val name : String
 )
 
+fun printName(name: String){
+    println("\u001B[43m" + "Name is $name" + "\u001B[0m")
+}
+
+fun printName1(name: String?){
+    println("\u001B[43m" + "Name is $name" + "\u001B[0m")
+}
 
 
 fun main() {
     var nameNullable : String? = null
+
+//    printName(nameNullable!!)
+
+//    nameNullable?.let { printName(it) }
+
+    nameNullable?.run { printName(this) }
+
 //    if (nameNullable != null) {
 //        println("Value is : ${nameNullable.length}")
 //    }
+
     println("Value is : ${nameNullable?.length}") //safe operator ?
     val lenght = nameNullable?.length ?: 0 // Elvis operator
     val lenght2 = nameNullable?.length?.toLong() ?: 0 // Elvis and toLong
@@ -24,6 +39,7 @@ fun main() {
     println("Value is : $nameNullable")
 
     var name : String  = "Dilip"
+    printName1(name)
 
     val movie = Movie(null, "Avengers")
     val savedMovie = saveMovie(movie)
