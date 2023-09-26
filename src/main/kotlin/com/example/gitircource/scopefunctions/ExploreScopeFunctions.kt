@@ -28,7 +28,7 @@ fun exploreRun() {
 
     }
 
-    println("Run lenght is : $lenght ")
+    println("Run lenght is : $lenght")
 
  }
 
