@@ -11,7 +11,7 @@ fun main() {
     val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPEMENT }
     val desPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
 
-    val list = listOf(listOf(1, 2, 3), listOf(4, 5, 6))
+   /* val list = listOf(listOf(1, 2, 3), listOf(4, 5, 6))
 
     val mapResult = list.map { outerList ->
         outerList.map {
@@ -27,15 +27,42 @@ fun main() {
         }
     }
 
-    println("flatMapResult: $flatMapResult")
+    println("flatMapResult: $flatMapResult")*/
 
 
     //    exploreFilter(courseList, desPredicate)
 
     //   exploreMap(courseList,desPredicate)
 
-    val courses = exploreFlatMap(courseList, KAFKA)
-    println("kafka courses : $courses")
+    //val courses = exploreFlatMap(courseList, KAFKA)
+    //println("kafka courses : $courses")
+
+    exploreHashMap()
+
+}
+
+fun exploreHashMap() {
+    val nameAgeMutableMap = mutableMapOf("Dilip" to 33 , "Scooby" to 5)
+    nameAgeMutableMap
+        .forEach{
+            (k,v) -> println("Key : $k and the value is $v")
+        }
+
+//    val value = nameAgeMutableMap.get("Dilip")
+//    val value = nameAgeMutableMap["Dilip"]
+    val value = nameAgeMutableMap.getOrElse("Dilip1"){"abc"}
+    println("value is $value")
+
+//    val result = nameAgeMutableMap.containsKey("abc") //give me false
+    val result = nameAgeMutableMap.containsKey("Dilip")
+    println("result is $result")
+
+    val filteredMap = nameAgeMutableMap.filterKeys { it.length > 5 }
+        .map {it.key.uppercase()}
+    println("filteredMap is $filteredMap")
+
+    val maxAge = nameAgeMutableMap.maxByOrNull { it.value }
+    println("maxAge is $maxAge")
 
 }
 
