@@ -37,7 +37,26 @@ fun main() {
     //val courses = exploreFlatMap(courseList, KAFKA)
     //println("kafka courses : $courses")
 
-    exploreHashMap()
+   // exploreHashMap()
+    collection_nullability()
+
+}
+
+fun collection_nullability() {
+    var list : MutableList<String>? = null
+
+    list = mutableListOf() // when I put this ther is no need of list.? in using maps
+
+    list.add("Dillip")
+    list.forEach{
+        println("value is $it")
+    }
+
+
+    val list1 : List<String?> = listOf("Adam", null, "Alex")
+    list1.forEach{
+        println("value Length is ${it?.length}")
+    }
 
 }
 
